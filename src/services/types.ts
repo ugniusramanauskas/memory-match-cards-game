@@ -3,7 +3,7 @@ interface Images {
   png: string;
 }
 
-interface Card {
+export interface ICard {
   code: string;
   image: string;
   images: Images;
@@ -11,11 +11,11 @@ interface Card {
   suit: string;
 }
 
-export interface DeckWithCards extends Deck {
-  cards: Card[];
+export interface DeckWithCards extends IDeck {
+  cards: ICard[];
 }
 
-export interface Deck {
+export interface IDeck {
   success: boolean;
   deck_id: string;
   shuffled?: boolean;

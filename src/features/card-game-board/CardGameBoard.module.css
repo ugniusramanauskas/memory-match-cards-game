@@ -1,0 +1,10 @@
+.cardBoard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    gap: 10px;
+}
