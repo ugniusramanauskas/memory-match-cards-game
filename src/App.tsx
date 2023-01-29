@@ -1,5 +1,5 @@
 import './App.css';
-import { CardGameBoard } from './features/card-game-board/CardGameBoard';
+import { CardGameBoard } from './features/card-game/CardGameBoard';
 
 export const App = () => {
   return (

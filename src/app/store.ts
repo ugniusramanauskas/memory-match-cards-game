@@ -1,14 +1,18 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
+import cardsReducer from '../features/card-game/cardGameSlice';
+// import { listenerMiddleware } from '../features/card-game/cardGameMiddleware';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { cardsApi } from '../services/cards';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    cardGame: cardsReducer,
     [cardsApi.reducerPath]: cardsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(cardsApi.middleware),
+  // .prepend(listenerMiddleware.middleware),
 });
 
 setupListeners(store.dispatch);

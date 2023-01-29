@@ -3,12 +3,14 @@ interface Images {
   png: string;
 }
 
+export type CardId = number;
 export interface ICard {
   code: string;
   image: string;
   images: Images;
   value: string;
   suit: string;
+  id: CardId;
 }
 
 export interface DeckWithCards extends IDeck {
