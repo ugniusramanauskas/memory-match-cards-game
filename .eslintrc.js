@@ -8,9 +8,8 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:jsx-a11y/recommended',
   ],
-  plugins: ['prettier', 'react', 'react-hooks', 'jsx-a11y', 'lodash'],
+  plugins: ['prettier', 'react', 'react-hooks', 'lodash'],
 
   rules: {
     'react/jsx-filename-extension': [2, { extensions: ['.tsx', '.jsx'] }],
@@ -19,7 +18,6 @@ module.exports = {
     'react/prop-types': 0,
     'react/no-unescaped-entities': 0,
     'react/display-name': 0,
-    'jsx-a11y/no-autofocus': 0,
     'no-unused-vars': [
       2,
       {
