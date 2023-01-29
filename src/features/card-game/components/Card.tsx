@@ -14,7 +14,7 @@ export const Card: FC<Props> = ({ card }) => {
   const isFlipped = useAppSelector((state) => selectIsFlipped(state, id));
   const handleClick = () => dispatch(clickCard(id));
 
-  console.log('Re-rendering card: ', id);
+  // console.log('Re-rendering card: ', id);
   return (
     <img
       style={{ maxWidth: '80px', minWidth: '40px' }}
