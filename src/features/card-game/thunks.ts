@@ -34,8 +34,8 @@ export const clickCard =
     ) {
       dispatch(addCardIdToUnderEvaluation(cardId));
     }
-    dispatch(checkForMatch());
     dispatch(incrementCounter());
+    dispatch(checkForMatch());
     dispatch(checkForWin());
   };
 
@@ -57,7 +57,7 @@ const checkForMatch = (): AppThunk => (dispatch, getState) => {
   }
 };
 
-const checkForWin = (): AppThunk => (dispatch, getState) => {
+const checkForWin = (): AppThunk => async (dispatch, getState) => {
   const cards = getState().cardGame.cards;
   const cardIdsMatched = getState().cardGame.cardIdsMatched;
   const numberOfClicks = getState().cardGame.numberOfClicks;
@@ -65,12 +65,14 @@ const checkForWin = (): AppThunk => (dispatch, getState) => {
   console.log('cards length: ', cards.length);
   console.log('cardIdsMatched length: ', cardIdsMatched.length);
   if (cardIdsMatched.length === cards.length) {
-    alert(`You finished the game in ${numberOfClicks} clicks and ${seconds} seconds!`);
-    dispatch(updateTop10Scores());
-    dispatch(clearCounter());
-    dispatch(clearSeconds());
-    dispatch(clearCardIdsMatched());
-    dispatch(incrementNumberOfGamesPlayed());
+    setTimeout(() => {
+      alert(`You finished the game in ${numberOfClicks} clicks and ${seconds} seconds!`);
+      dispatch(updateTop10Scores());
+      dispatch(clearCounter());
+      dispatch(clearSeconds());
+      dispatch(clearCardIdsMatched());
+      dispatch(incrementNumberOfGamesPlayed());
+    }, 200);
   }
 };
 
