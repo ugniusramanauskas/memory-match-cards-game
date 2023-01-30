@@ -1,10 +1,10 @@
 import { skipToken } from '@reduxjs/toolkit/query/react';
 import { useGetNewDeckIdQuery, useGetDeckWithCardsQuery } from '../../services/cards';
 import { Card } from './components/Card';
-import styles from './CardGameBoard.module.css';
+import styles from './CardGame.module.css';
 import { useEffect, useMemo } from 'react';
-import { useAppDispatch } from '../../app/hooks';
-import { addCardsToState } from './cardGameSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { addCardsToState, clearSeconds, loadTop10Scores } from './cardGameSlice';
 
 export const CardGameBoard = () => {
   const useCombinedGetCardsQuery = () => {
@@ -14,11 +14,12 @@ export const CardGameBoard = () => {
       data: deckWithCardsData,
       error,
       isLoading,
+      refetch,
     } = useGetDeckWithCardsQuery(deck_id ?? skipToken);
-    return { deckWithCardsData, error, isLoading };
+    return { deckWithCardsData, error, isLoading, refetch };
   };
   const dispatch = useAppDispatch();
-  const { deckWithCardsData: data, error, isLoading } = useCombinedGetCardsQuery();
+  const { deckWithCardsData: data, error, isLoading, refetch } = useCombinedGetCardsQuery();
   const { cards } = data || {};
   const shuffledCards = useMemo(() => {
     if (!cards || cards?.length === 0) return [];
@@ -30,9 +31,21 @@ export const CardGameBoard = () => {
     return doubleCardsWithIds.sort(() => 0.5 - Math.random());
   }, [cards]);
 
+  const numberOfGamesPlayed: number = useAppSelector((state) => state.cardGame.numberOfGamesPlayed);
+
+  useEffect(() => {
+    if (numberOfGamesPlayed === 0) return;
+    refetch();
+  }, [numberOfGamesPlayed, refetch]);
+
   useEffect(() => {
     dispatch(addCardsToState(shuffledCards));
+    dispatch(clearSeconds());
   }, [dispatch, shuffledCards]);
+
+  useEffect(() => {
+    dispatch(loadTop10Scores());
+  }, [dispatch]);
 
   if (error) return <h3>Something went wrong</h3>;
   if (isLoading) return <h3>Loading...</h3>;
