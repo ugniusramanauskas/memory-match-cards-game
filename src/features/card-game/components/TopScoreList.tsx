@@ -1,11 +1,12 @@
 import { useAppSelector } from '../../../app/hooks';
+import { selectTopScores } from '../selectors';
 
 type Props = {
   className?: string;
 };
 
 export const TopScoreList = ({ className }: Props) => {
-  const topScores = useAppSelector((state) => state.cardGame.top10Scores);
+  const topScores = useAppSelector(selectTopScores);
   return (
     <div
       className={className}
@@ -15,7 +16,17 @@ export const TopScoreList = ({ className }: Props) => {
         alignItems: 'flex-start',
       }}
     >
-      TopScoreList:
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          textAlign: 'left',
+          fontWeight: 'bold',
+        }}
+      >
+        Top Scores (by clicks):
+      </div>
       {topScores.map((score, index) => (
         <div key={score}>
           <span
