@@ -4,19 +4,15 @@ import { useGetDeckWithCardsQuery } from '../../services/cards';
 import { selectNumberOfGamesPlayed, selectSeconds } from './selectors';
 import { addCardsToState, clearSeconds, incrementSeconds } from './slice';
 import { loadTop10Scores } from './thunks';
+import { addIdsToCards, doubleCards, shuffleCards } from './utils';
 
 export const useLoadCards = () => {
-  const { data, error, isLoading, refetch } = useGetDeckWithCardsQuery();
+  const { data, error, isLoading, refetch } = useGetDeckWithCardsQuery(3);
   const { cards } = data || {};
 
   const shuffledCards = useMemo(() => {
     if (!cards || cards?.length === 0) return [];
-    const doubleCards = [...cards, ...cards];
-    const doubleCardsWithIds = doubleCards.map((card, index) => ({
-      ...card,
-      id: index,
-    }));
-    return doubleCardsWithIds.sort(() => 0.5 - Math.random());
+    return shuffleCards(addIdsToCards(doubleCards(cards)));
   }, [cards]);
 
   const numberOfGamesPlayed = useAppSelector(selectNumberOfGamesPlayed);
