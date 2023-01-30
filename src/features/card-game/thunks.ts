@@ -1,5 +1,5 @@
 import { AppThunk } from '../../app/store';
-import { CARD_GAME_TOP_SCORES } from '../../services/constants';
+import { CARD_GAME_TOP_SCORES } from './constants';
 import { CardId } from '../../services/types';
 import {
   addCardIdToMatched,

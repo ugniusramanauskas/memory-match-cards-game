@@ -1,12 +1,14 @@
 import { useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useGetDeckWithCardsQuery } from '../../services/cards';
-import { addCardsToState, clearSeconds } from './slice';
+import { selectNumberOfGamesPlayed, selectSeconds } from './selectors';
+import { addCardsToState, clearSeconds, incrementSeconds } from './slice';
 import { loadTop10Scores } from './thunks';
 
 export const useLoadCards = () => {
   const { data, error, isLoading, refetch } = useGetDeckWithCardsQuery();
   const { cards } = data || {};
+
   const shuffledCards = useMemo(() => {
     if (!cards || cards?.length === 0) return [];
     const doubleCards = [...cards, ...cards];
@@ -17,7 +19,7 @@ export const useLoadCards = () => {
     return doubleCardsWithIds.sort(() => 0.5 - Math.random());
   }, [cards]);
 
-  const numberOfGamesPlayed = useAppSelector((state) => state.cardGame.numberOfGamesPlayed);
+  const numberOfGamesPlayed = useAppSelector(selectNumberOfGamesPlayed);
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -35,4 +37,19 @@ export const useLoadCards = () => {
   }, [dispatch]);
 
   return { cards: shuffledCards, error, isLoading };
+};
+
+export const useTimer = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      dispatch(incrementSeconds());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [dispatch]);
+
+  const seconds = useAppSelector(selectSeconds);
+
+  return { seconds };
 };
