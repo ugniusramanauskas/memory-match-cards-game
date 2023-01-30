@@ -1,23 +1,11 @@
 import { useEffect, useMemo } from 'react';
-import { skipToken } from '@reduxjs/toolkit/query/react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { useGetNewDeckIdQuery, useGetDeckWithCardsQuery } from '../../services/cards';
+import { useGetDeckWithCardsQuery } from '../../services/cards';
 import { addCardsToState, clearSeconds } from './slice';
 import { loadTop10Scores } from './thunks';
 
-export const useGetCards = () => {
-  const useCombinedGetCardsQuery = () => {
-    const { data: deckIdData } = useGetNewDeckIdQuery();
-    const { deck_id } = deckIdData || {};
-    const {
-      data: deckWithCardsData,
-      error,
-      isLoading,
-      refetch,
-    } = useGetDeckWithCardsQuery(deck_id ?? skipToken);
-    return { deckWithCardsData, error, isLoading, refetch };
-  };
-  const { deckWithCardsData: data, error, isLoading, refetch } = useCombinedGetCardsQuery();
+export const useLoadCards = () => {
+  const { data, error, isLoading, refetch } = useGetDeckWithCardsQuery();
   const { cards } = data || {};
   const shuffledCards = useMemo(() => {
     if (!cards || cards?.length === 0) return [];

@@ -17,7 +17,7 @@ export interface DeckWithCards extends IDeck {
   cards: ICard[];
 }
 
-export interface IDeck {
+interface IDeck {
   success: boolean;
   deck_id: string;
   shuffled?: boolean;
