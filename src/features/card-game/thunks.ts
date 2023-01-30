@@ -24,7 +24,6 @@ export const loadTop10Scores = (): AppThunk => (dispatch) => {
 export const clickCard =
   (cardId: CardId): AppThunk =>
   (dispatch, getState) => {
-    console.log('clicked card: ', cardId);
     const cardIdsUnderEvaluation = getState().cardGame.cardIdsUnderEvaluation;
     const cardIdsMatched = getState().cardGame.cardIdsMatched;
     if (
@@ -41,7 +40,6 @@ export const clickCard =
 
 const checkForMatch = (): AppThunk => (dispatch, getState) => {
   const cardIdsUnderEvaluation = getState().cardGame.cardIdsUnderEvaluation;
-  console.log('cardIdsUnderEvaluation length: ', cardIdsUnderEvaluation.length);
   const cards = getState().cardGame.cards;
   if (cardIdsUnderEvaluation.length === 2) {
     const [cardId1, cardId2] = cardIdsUnderEvaluation;
@@ -62,8 +60,6 @@ const checkForWin = (): AppThunk => async (dispatch, getState) => {
   const cardIdsMatched = getState().cardGame.cardIdsMatched;
   const numberOfClicks = getState().cardGame.numberOfClicks;
   const seconds = getState().cardGame.seconds;
-  console.log('cards length: ', cards.length);
-  console.log('cardIdsMatched length: ', cardIdsMatched.length);
   if (cardIdsMatched.length === cards.length) {
     setTimeout(() => {
       alert(`You finished the game in ${numberOfClicks} clicks and ${seconds} seconds!`);

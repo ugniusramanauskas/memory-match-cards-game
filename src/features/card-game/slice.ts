@@ -32,7 +32,6 @@ export const cardGameSlice = createSlice({
       state.cardIdsUnderEvaluation.push(action.payload);
     },
     clearCardIdsUnderEvaluation: (state) => {
-      console.log('clearing cardIdsUnderEvaluation');
       state.cardIdsUnderEvaluation = [];
     },
     addCardIdToMatched: (state, action: PayloadAction<CardId>) => {
