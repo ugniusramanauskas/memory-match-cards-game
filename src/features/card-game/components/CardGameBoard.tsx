@@ -1,9 +1,9 @@
 import { Card } from './Card';
 import styles from './CardGame.module.css';
-import { useGetCards } from '../hooks';
+import { useLoadCards } from '../hooks';
 
 export const CardGameBoard = () => {
-  const { cards, error, isLoading } = useGetCards();
+  const { cards, error, isLoading } = useLoadCards();
 
   if (error) return <h3>Something went wrong</h3>;
   if (isLoading) return <h3>Loading...</h3>;
