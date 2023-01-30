@@ -1,19 +1,10 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { incrementSeconds } from '../slice';
+import { useTimer } from '../hooks';
 
 type Props = {
   className?: string;
 };
 
 export const Timer = ({ className }: Props) => {
-  const dispatch = useAppDispatch();
-  const seconds = useAppSelector((state) => state.cardGame.seconds);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      dispatch(incrementSeconds());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [dispatch]);
+  const { seconds } = useTimer();
   return <div className={className}>{`Timer: ${seconds} seconds elapsed`}</div>;
 };
