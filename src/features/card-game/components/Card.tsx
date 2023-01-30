@@ -1,21 +1,19 @@
-import { FC } from 'react';
 import { ICard } from '../../../services/types';
 import { GENERIC_BACK_CARDS_URL } from '../../../services/constants';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectIsFlipped } from '../slice';
 import { clickCard } from '../thunks';
+import { selectIsFlipped } from '../selectors';
 
 type Props = {
   card: ICard;
 };
 
-export const Card: FC<Props> = ({ card }) => {
+export const Card = ({ card }: Props) => {
   const dispatch = useAppDispatch();
   const { images, id } = card;
   const isFlipped = useAppSelector((state) => selectIsFlipped(state, id));
   const handleClick = () => dispatch(clickCard(id));
 
-  // console.log('Re-rendering card: ', id);
   return (
     <img
       style={{ maxWidth: '80px', minWidth: '40px' }}

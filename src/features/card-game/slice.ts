@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
 import { ICard, CardId } from '../../services/types';
 
 export interface CardGameState {
@@ -80,9 +79,5 @@ export const {
   replaceTop10Scores,
   incrementNumberOfGamesPlayed,
 } = cardGameSlice.actions;
-
-export const selectIsFlipped = (state: RootState, cardId: CardId) =>
-  state.cardGame.cardIdsUnderEvaluation.includes(cardId) ||
-  state.cardGame.cardIdsMatched.includes(cardId);
 
 export default cardGameSlice.reducer;

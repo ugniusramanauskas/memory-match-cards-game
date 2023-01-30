@@ -32,7 +32,7 @@ export const CardGameBoard = () => {
     return doubleCardsWithIds.sort(() => 0.5 - Math.random());
   }, [cards]);
 
-  const numberOfGamesPlayed: number = useAppSelector((state) => state.cardGame.numberOfGamesPlayed);
+  const numberOfGamesPlayed = useAppSelector((state) => state.cardGame.numberOfGamesPlayed);
 
   useEffect(() => {
     if (numberOfGamesPlayed === 0) return;
