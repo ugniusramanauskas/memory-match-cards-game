@@ -1,8 +1,5 @@
 import './App.css';
-import { CardGameBoard } from './features/card-game/CardGameBoard';
-import { ClickCounter } from './features/card-game/components/ClickCounter';
-import { Timer } from './features/card-game/components/Timer';
-import { TopScoreList } from './features/card-game/components/TopScoreList';
+import { CardGameBoard, ClickCounter, Timer, TopScoreList } from './features/card-game';
 
 export const App = () => {
   return (

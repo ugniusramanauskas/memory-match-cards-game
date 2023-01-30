@@ -2,7 +2,8 @@ import { FC } from 'react';
 import { ICard } from '../../../services/types';
 import { GENERIC_BACK_CARDS_URL } from '../../../services/constants';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { clickCard, selectIsFlipped } from '../cardGameSlice';
+import { selectIsFlipped } from '../slice';
+import { clickCard } from '../thunks';
 
 type Props = {
   card: ICard;

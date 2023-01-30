@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { incrementSeconds } from '../cardGameSlice';
+import { incrementSeconds } from '../slice';
 
 type Props = {
   className?: string;

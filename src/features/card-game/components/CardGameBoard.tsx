@@ -1,10 +1,11 @@
 import { skipToken } from '@reduxjs/toolkit/query/react';
-import { useGetNewDeckIdQuery, useGetDeckWithCardsQuery } from '../../services/cards';
-import { Card } from './components/Card';
+import { useGetNewDeckIdQuery, useGetDeckWithCardsQuery } from '../../../services/cards';
+import { Card } from './Card';
 import styles from './CardGame.module.css';
 import { useEffect, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { addCardsToState, clearSeconds, loadTop10Scores } from './cardGameSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { addCardsToState, clearSeconds } from '../slice';
+import { loadTop10Scores } from '../thunks';
 
 export const CardGameBoard = () => {
   const useCombinedGetCardsQuery = () => {
