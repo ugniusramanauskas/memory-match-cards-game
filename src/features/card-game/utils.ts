@@ -11,3 +11,10 @@ export const shuffleCards = (cards: ICard[]) => {
 export const addIdsToCards = (cards: ICard[]) => {
   return cards.map((card, index) => ({ ...card, id: index }));
 };
+
+export const preloadImages = (cards: ICard[]) => {
+  cards.forEach((card) => {
+    const img = new Image();
+    img.src = card.images.png;
+  });
+};

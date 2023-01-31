@@ -2,9 +2,9 @@ import { useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useGetDeckWithCardsQuery } from '../../services/cards';
 import { selectNumberOfGamesPlayed, selectSeconds } from './selectors';
-import { addCardsToState, clearSeconds, incrementSeconds } from './slice';
+import { addCardsToState, incrementSeconds } from './slice';
 import { loadTop10Scores } from './thunks';
-import { addIdsToCards, doubleCards, shuffleCards } from './utils';
+import { addIdsToCards, doubleCards, preloadImages, shuffleCards } from './utils';
 
 export const useLoadCards = () => {
   const { data, error, isLoading, refetch } = useGetDeckWithCardsQuery(3);
@@ -24,8 +24,12 @@ export const useLoadCards = () => {
   }, [numberOfGamesPlayed, refetch]);
 
   useEffect(() => {
+    if (!cards || cards?.length === 0) return;
+    preloadImages(cards);
+  }, [cards]);
+
+  useEffect(() => {
     dispatch(addCardsToState(shuffledCards));
-    dispatch(clearSeconds());
   }, [dispatch, shuffledCards]);
 
   useEffect(() => {
