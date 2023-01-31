@@ -1,5 +1,5 @@
 import { RootState } from '../../app/store';
-import { CardId } from '../../services/types';
+import { CardId } from './types';
 
 export const selectIsFlipped = (state: RootState, cardId: CardId) =>
   state.cardGame.cardIdsUnderEvaluation.includes(cardId) ||
@@ -7,10 +7,8 @@ export const selectIsFlipped = (state: RootState, cardId: CardId) =>
 
 export const selectTopScores = (state: RootState) => state.cardGame.top10Scores;
 
-export const selectNumberOfGamesPlayed = (state: RootState) =>
-  state.cardGame.numberOfGamesPlayed;
+export const selectNumberOfGamesPlayed = (state: RootState) => state.cardGame.numberOfGamesPlayed;
 
 export const selectSeconds = (state: RootState) => state.cardGame.seconds;
 
-export const selectNumberOfClicks = (state: RootState) =>
-  state.cardGame.numberOfClicks;
+export const selectNumberOfClicks = (state: RootState) => state.cardGame.numberOfClicks;

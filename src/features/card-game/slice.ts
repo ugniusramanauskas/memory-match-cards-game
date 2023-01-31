@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICard, CardId } from '../../services/types';
+import { ICard, CardId } from './types';
 
 export interface CardGameState {
   cards: ICard[];

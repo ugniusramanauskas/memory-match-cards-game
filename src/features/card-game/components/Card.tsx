@@ -1,4 +1,4 @@
-import { ICard } from '../../../services/types';
+import { ICard } from '../types';
 import { GENERIC_CARD_BACK_SIDE_IMAGE } from '../constants';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { clickCard } from '../thunks';

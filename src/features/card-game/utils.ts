@@ -1,4 +1,4 @@
-import { ICard } from '../../services/types';
+import { ICard } from './types';
 
 export const doubleCards = (cards: ICard[]) => {
   return [...cards, ...cards];

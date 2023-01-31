@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import cardsReducer from '../features/card-game/slice';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { cardsApi } from '../services/cards';
+import { cardsApi } from '../features/card-game/cardGameApi';
 
 export const store = configureStore({
   reducer: {
