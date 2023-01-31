@@ -13,11 +13,11 @@ export interface ICard {
   id: CardId;
 }
 
-export interface DeckWithCards extends IDeck {
+export interface DeckWithCards extends Deck {
   cards: ICard[];
 }
 
-interface IDeck {
+interface Deck {
   success: boolean;
   deck_id: string;
   shuffled?: boolean;
