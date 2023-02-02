@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { useGetDeckWithCardsQuery } from './cardGameApi';
+import { useGetDeckWithCardsQuery } from './cardsApi';
 import { selectNumberOfGamesPlayed, selectSeconds } from './selectors';
 import { addCardsToState, incrementSeconds } from './slice';
 import { ICard } from './types';
