@@ -3,10 +3,26 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useGetDeckWithCardsQuery } from './cardGameApi';
 import { selectNumberOfGamesPlayed, selectSeconds } from './selectors';
 import { addCardsToState, incrementSeconds } from './slice';
-import { loadTop10Scores } from './thunks';
+import { ICard } from './types';
 import { addIdsToCards, doubleCards, preloadImages, shuffleCards } from './utils';
 
+const useRefetchCardsAfterEachGame = (refetch: () => void) => {
+  const numberOfGamesPlayed = useAppSelector(selectNumberOfGamesPlayed);
+  useEffect(() => {
+    if (numberOfGamesPlayed === 0) return;
+    refetch();
+  }, [numberOfGamesPlayed, refetch]);
+};
+
+const usePreloadImagesToCache = (cards: ICard[] | undefined) => {
+  useEffect(() => {
+    if (!cards || cards?.length === 0) return;
+    preloadImages(cards);
+  }, [cards]);
+};
+
 export const useLoadCards = () => {
+  const dispatch = useAppDispatch();
   const { data, error, isLoading, refetch } = useGetDeckWithCardsQuery(3);
   const { cards } = data || {};
 
@@ -15,26 +31,12 @@ export const useLoadCards = () => {
     return shuffleCards(addIdsToCards(doubleCards(cards)));
   }, [cards]);
 
-  const numberOfGamesPlayed = useAppSelector(selectNumberOfGamesPlayed);
-
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    if (numberOfGamesPlayed === 0) return;
-    refetch();
-  }, [numberOfGamesPlayed, refetch]);
-
-  useEffect(() => {
-    if (!cards || cards?.length === 0) return;
-    preloadImages(cards);
-  }, [cards]);
+  useRefetchCardsAfterEachGame(refetch);
+  usePreloadImagesToCache(cards);
 
   useEffect(() => {
     dispatch(addCardsToState(shuffledCards));
   }, [dispatch, shuffledCards]);
-
-  useEffect(() => {
-    dispatch(loadTop10Scores());
-  }, [dispatch]);
 
   return { cards: shuffledCards, error, isLoading };
 };

@@ -1,5 +1,7 @@
-import { useAppSelector } from '../../../app/hooks';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectTopScores } from '../selectors';
+import { loadTop10Scores } from '../thunks';
 
 type Props = {
   className?: string;
@@ -7,6 +9,11 @@ type Props = {
 
 export const TopScoreList = ({ className }: Props) => {
   const topScores = useAppSelector(selectTopScores);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(loadTop10Scores());
+  }, [dispatch]);
+
   return (
     <div
       className={className}
