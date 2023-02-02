@@ -3,45 +3,15 @@
   height: 100vh;
 }
 
-.app-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .app-header {
   min-height: 10%;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
   gap: 10px;
   padding: 10px 10px;
 }
 
-.heading-small {
-  font-size: calc(10px + 1vmin);
-}
-
 .main-gameboard {
   min-height: 90%;
-  font-size: calc(10px + 2vmin);
-}
-
-.app-link {
-  color: rgb(112, 76, 182);
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-}
-
-@media screen and (max-width: 768px) {
-  .top-score-header-xs {
-    height: 2rem;
-  }
 }
