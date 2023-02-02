@@ -5,3 +5,5 @@ export { TopScoreList } from './components/TopScoreList';
 export { cardsApi } from './cardGameApi';
 export { TopClicks } from './components/TopClicks';
 export { TopTimes } from './components/TopTimes';
+export { default as cardsReducer } from './slice';
+export { BASE_URL, NEW_DECK_PATH } from './constants';

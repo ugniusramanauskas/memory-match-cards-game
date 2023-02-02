@@ -5,9 +5,8 @@ import {
   PreloadedState,
   combineReducers,
 } from '@reduxjs/toolkit';
-import cardsReducer from '../features/card-game/slice';
+import { cardsReducer, cardsApi } from '../features/card-game';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { cardsApi } from '../features/card-game/cardGameApi';
 
 const rootReducer = combineReducers({
   cardGame: cardsReducer,
@@ -24,8 +23,6 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
 
 setupListeners(setupStore().dispatch);
 
-// export type AppDispatch = typeof store.dispatch;
-// export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,

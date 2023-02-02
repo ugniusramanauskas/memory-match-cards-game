@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { BASE_URL, NEW_DECK_PATH } from '../../features/card-game/constants';
+import { BASE_URL, NEW_DECK_PATH } from '../../features/card-game';
 import { emptyState } from '../../utils/testUtils';
 
 export const handlers = [
