@@ -1,4 +1,4 @@
-import styles from './CardGame.module.css';
+import styles from '../CardGame.module.css';
 
 type Props = {
   title: string;

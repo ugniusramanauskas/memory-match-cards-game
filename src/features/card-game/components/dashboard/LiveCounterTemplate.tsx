@@ -1,21 +1,23 @@
-import { useTimer } from '../hooks';
+type Props = {
+  title: string;
+  value: number;
+};
 
-export const Timer = () => {
-  const { seconds } = useTimer();
+export const LiveCounter = ({ title, value }: Props) => {
   return (
     <div
       style={{
         height: '2.5rem',
       }}
     >
-      <span>Seconds since the start: </span>
+      <span>{title}</span>
       <span
         style={{
           display: 'inline-block',
           width: '3em',
         }}
       >
-        {seconds}
+        {value}
       </span>
     </div>
   );

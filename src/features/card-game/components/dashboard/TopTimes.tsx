@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectTopTimes } from '../selectors';
-import { loadTop10Times } from '../thunks';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { selectTopTimes } from '../../selectors';
+import { loadTop10Times } from '../../thunks';
 import { TopScoreList } from './TopScoreList';
 
 export const TopTimes = () => {
