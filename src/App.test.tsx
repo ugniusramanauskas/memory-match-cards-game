@@ -5,7 +5,7 @@ import { App } from './App';
 import { renderWithProviders } from './utils/test-utils';
 
 export const handlers = [
-  rest.get('/new/draw/?count=3', (req, res, ctx) => {
+  rest.get('https://deckofcardsapi.com/api/deck/new/draw/', (req, res, ctx) => {
     return res(ctx.json('John Smith'), ctx.delay(150));
   }),
 ];
@@ -21,7 +21,7 @@ afterEach(() => server.resetHandlers());
 // Disable API mocking after the tests are done.
 afterAll(() => server.close());
 
-test('renders learn react link', () => {
+test('renders Memory Game title', () => {
   renderWithProviders(<App />);
   const linkElement = screen.getByText(/Memory Game/i);
   expect(linkElement).toBeInTheDocument();
