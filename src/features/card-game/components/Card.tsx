@@ -1,5 +1,5 @@
 import { ICard } from '../types';
-import { GENERIC_CARD_BACK_SIDE_IMAGE } from '../constants';
+import { GENERIC_BACK_OF_CARD_IMAGE } from '../constants';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { clickCard } from '../thunks';
 import { selectIsFlipped } from '../selectors';
@@ -10,8 +10,7 @@ type Props = {
 
 export const Card = ({ card }: Props) => {
   const dispatch = useAppDispatch();
-  const { images, id } = card || {};
-  const { png: cardImage } = images || {};
+  const { image: cardImage, id, code } = card || {};
   const isFlipped = useAppSelector((state) => selectIsFlipped(state, id));
   const handleClick = () => dispatch(clickCard(id));
 
@@ -19,8 +18,8 @@ export const Card = ({ card }: Props) => {
   return (
     <img
       style={{ maxWidth: '80px', minWidth: '40px' }}
-      src={!isFlipped ? GENERIC_CARD_BACK_SIDE_IMAGE : cardImage}
-      alt={String(id)}
+      src={!isFlipped ? GENERIC_BACK_OF_CARD_IMAGE : cardImage}
+      alt={code}
       onClick={handleClick}
     />
   );

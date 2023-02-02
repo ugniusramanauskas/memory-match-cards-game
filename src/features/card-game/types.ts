@@ -1,15 +1,8 @@
-interface Images {
-  svg: string;
-  png: string;
-}
-
 export type CardId = number;
+
 export interface ICard {
   code: string;
   image: string;
-  images: Images;
-  value: string;
-  suit: string;
   id: CardId;
 }
 
@@ -22,4 +15,14 @@ interface Deck {
   deck_id: string;
   shuffled?: boolean;
   remaining: number;
+}
+
+export interface CardGameState {
+  cards: ICard[];
+  cardIdsUnderEvaluation: CardId[];
+  cardIdsMatched: CardId[];
+  numberOfClicks: number;
+  seconds: number;
+  top10Scores: number[];
+  numberOfGamesPlayed: number;
 }

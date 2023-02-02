@@ -15,6 +15,6 @@ export const addIdsToCards = (cards: ICard[]) => {
 export const preloadImages = (cards: ICard[]) => {
   cards.forEach((card) => {
     const img = new Image();
-    img.src = card.images.png;
+    img.src = card.image;
   });
 };
