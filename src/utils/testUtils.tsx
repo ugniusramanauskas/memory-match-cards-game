@@ -36,15 +36,3 @@ export const emptyState = {
   top10Times: [],
   numberOfGamesPlayed: 0,
 };
-// const initialState = {
-//   cards: [
-//     {
-//       code: 'AS',
-//       image: 'https://deckofcardsapi.com/static/img/AS.png',
-//     },
-//     {
-//       code: '0D',
-//       image: 'https://deckofcardsapi.com/static/img/0D.png',
-//     },
-//   ],
-// };
