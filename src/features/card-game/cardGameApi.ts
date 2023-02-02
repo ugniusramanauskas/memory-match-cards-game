@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASE_URL, DEFAULT_CARD_COUNT } from './constants';
+import { BASE_URL, DEFAULT_UNIQUE_CARD_COUNT } from './constants';
 import type { DeckWithCards } from './types';
 
-const UNIQUE_CARD_COUNT = (Number(process.env.REACT_APP_CARD_COUNT) ?? DEFAULT_CARD_COUNT) / 2;
+const envCardCount = Number(process.env.REACT_APP_UNIQUE_CARD_COUNT);
+const uniqueCardCount = isNaN(envCardCount) ? DEFAULT_UNIQUE_CARD_COUNT : envCardCount;
 
 export const cardsApi = createApi({
   reducerPath: 'cardsApi',
@@ -11,7 +12,7 @@ export const cardsApi = createApi({
     getDeckWithCards: builder.query<DeckWithCards, void>({
       query: () => {
         return {
-          url: `new/draw/?count=${UNIQUE_CARD_COUNT}`,
+          url: `new/draw/?count=${uniqueCardCount}`,
         };
       },
     }),
