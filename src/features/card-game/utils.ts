@@ -5,7 +5,7 @@ export const doubleCards = (cards: ICard[]) => {
 };
 
 export const shuffleCards = (cards: ICard[]) => {
-  return cards.sort(() => 0.5 - Math.random());
+  return [...cards].sort(() => 0.5 - Math.random());
 };
 
 export const addIdsToCards = (cards: ICard[]) => {
