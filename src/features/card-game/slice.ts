@@ -7,7 +7,8 @@ const initialState: CardGameState = {
   cardIdsMatched: [],
   numberOfClicks: 0,
   seconds: 0,
-  top10Scores: [],
+  top10ClickScores: [],
+  top10Times: [],
   numberOfGamesPlayed: 0,
 };
 
@@ -42,11 +43,17 @@ export const cardGameSlice = createSlice({
     clearSeconds: (state) => {
       state.seconds = 0;
     },
-    replaceTop10Scores: (state, action: PayloadAction<number[]>) => {
-      state.top10Scores = action.payload;
+    replaceTop10ClickScores: (state, action: PayloadAction<number[]>) => {
+      state.top10ClickScores = action.payload;
     },
-    clearTop10Scores: (state) => {
-      state.top10Scores = [];
+    replaceTop10Times: (state, action: PayloadAction<number[]>) => {
+      state.top10Times = action.payload;
+    },
+    clearTop10ClickScores: (state) => {
+      state.top10ClickScores = [];
+    },
+    clearTop10Times: (state) => {
+      state.top10Times = [];
     },
     incrementNumberOfGamesPlayed: (state) => {
       state.numberOfGamesPlayed += 1;
@@ -64,8 +71,10 @@ export const {
   clearCounter,
   incrementSeconds,
   clearSeconds,
-  clearTop10Scores,
-  replaceTop10Scores,
+  clearTop10ClickScores,
+  clearTop10Times,
+  replaceTop10ClickScores,
+  replaceTop10Times,
   incrementNumberOfGamesPlayed,
 } = cardGameSlice.actions;
 

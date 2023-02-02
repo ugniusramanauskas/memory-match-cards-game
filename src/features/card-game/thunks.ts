@@ -1,5 +1,5 @@
 import { AppThunk } from '../../app/store';
-import { CARD_GAME_TOP_SCORES } from './constants';
+import { CARD_GAME_TOP_CLICK_SCORES, CARD_GAME_TOP_TIMES } from './constants';
 import { CardId } from './types';
 import {
   addCardIdToMatched,
@@ -8,18 +8,13 @@ import {
   clearCardIdsUnderEvaluation,
   clearCounter,
   clearSeconds,
-  clearTop10Scores,
+  clearTop10ClickScores,
+  clearTop10Times,
   incrementCounter,
   incrementNumberOfGamesPlayed,
-  replaceTop10Scores,
+  replaceTop10ClickScores,
+  replaceTop10Times,
 } from './slice';
-
-export const loadTop10Scores = (): AppThunk => (dispatch) => {
-  const top10Scores = JSON.parse(localStorage.getItem(CARD_GAME_TOP_SCORES) || '[]');
-  if (Array.isArray(top10Scores)) {
-    dispatch(replaceTop10Scores(top10Scores));
-  }
-};
 
 export const clickCard =
   (cardId: CardId): AppThunk =>
@@ -64,6 +59,7 @@ const checkForWin = (): AppThunk => async (dispatch, getState) => {
     setTimeout(() => {
       alert(`You finished the game in ${numberOfClicks} clicks and ${seconds} seconds!`);
       dispatch(updateTop10Scores());
+      dispatch(updateTop10Times());
       dispatch(clearCounter());
       dispatch(clearSeconds());
       dispatch(clearCardIdsMatched());
@@ -74,11 +70,36 @@ const checkForWin = (): AppThunk => async (dispatch, getState) => {
 
 const updateTop10Scores = (): AppThunk => (dispatch, getState) => {
   const numberOfClicks = getState().cardGame.numberOfClicks;
-  const top10Scores = getState().cardGame.top10Scores;
-  const newTopScores = [...top10Scores, numberOfClicks].sort((a, b) => a - b);
+  const top10ClickScores = getState().cardGame.top10ClickScores;
+  const newTopScores = [...top10ClickScores, numberOfClicks].sort((a, b) => a - b);
   const uniqueTopScores = [...new Set(newTopScores)];
-  const top10ScoresToStore = uniqueTopScores.slice(0, 10);
-  dispatch(clearTop10Scores());
-  dispatch(replaceTop10Scores(top10ScoresToStore));
-  localStorage.setItem(CARD_GAME_TOP_SCORES, JSON.stringify(top10ScoresToStore));
+  const top10ClickScoresToStore = uniqueTopScores.slice(0, 10);
+  dispatch(clearTop10ClickScores());
+  dispatch(replaceTop10ClickScores(top10ClickScoresToStore));
+  localStorage.setItem(CARD_GAME_TOP_CLICK_SCORES, JSON.stringify(top10ClickScoresToStore));
+};
+
+const updateTop10Times = (): AppThunk => (dispatch, getState) => {
+  const seconds = getState().cardGame.seconds;
+  const top10Times = getState().cardGame.top10Times;
+  const newTopTimes = [...top10Times, seconds].sort((a, b) => a - b);
+  const uniqueTopTimes = [...new Set(newTopTimes)];
+  const top10TimesToStore = uniqueTopTimes.slice(0, 10);
+  dispatch(clearTop10Times());
+  dispatch(replaceTop10Times(top10TimesToStore));
+  localStorage.setItem(CARD_GAME_TOP_TIMES, JSON.stringify(top10TimesToStore));
+};
+
+export const loadTop10ClickScores = (): AppThunk => (dispatch) => {
+  const top10ClickScores = JSON.parse(localStorage.getItem(CARD_GAME_TOP_CLICK_SCORES) || '[]');
+  if (Array.isArray(top10ClickScores)) {
+    dispatch(replaceTop10ClickScores(top10ClickScores));
+  }
+};
+
+export const loadTop10Times = (): AppThunk => (dispatch) => {
+  const top10Times = JSON.parse(localStorage.getItem(CARD_GAME_TOP_TIMES) || '[]');
+  if (Array.isArray(top10Times)) {
+    dispatch(replaceTop10Times(top10Times));
+  }
 };

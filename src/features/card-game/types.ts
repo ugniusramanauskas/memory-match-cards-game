@@ -23,6 +23,7 @@ export interface CardGameState {
   cardIdsMatched: CardId[];
   numberOfClicks: number;
   seconds: number;
-  top10Scores: number[];
+  top10ClickScores: number[];
+  top10Times: number[];
   numberOfGamesPlayed: number;
 }

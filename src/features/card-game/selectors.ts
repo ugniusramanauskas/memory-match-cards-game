@@ -5,7 +5,9 @@ export const selectIsFlipped = (state: RootState, cardId: CardId) =>
   state.cardGame.cardIdsUnderEvaluation.includes(cardId) ||
   state.cardGame.cardIdsMatched.includes(cardId);
 
-export const selectTopScores = (state: RootState) => state.cardGame.top10Scores;
+export const selectTopClickScores = (state: RootState) => state.cardGame.top10ClickScores;
+
+export const selectTopTimes = (state: RootState) => state.cardGame.top10Times;
 
 export const selectNumberOfGamesPlayed = (state: RootState) => state.cardGame.numberOfGamesPlayed;
 

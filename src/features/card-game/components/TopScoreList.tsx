@@ -1,53 +1,43 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectTopScores } from '../selectors';
-import { loadTop10Scores } from '../thunks';
+import styles from './CardGame.module.css';
 
 type Props = {
-  className?: string;
+  title: string;
+  topScores: number[];
+  itemLabel: string;
 };
 
-export const TopScoreList = ({ className }: Props) => {
-  const topScores = useAppSelector(selectTopScores);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(loadTop10Scores());
-  }, [dispatch]);
-
+export const TopScoreList = ({ title, topScores, itemLabel }: Props) => {
+  if (!topScores || !Array.isArray(topScores) || topScores.length === 0) return null;
   return (
-    <div
-      className="heading-small"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-      }}
-    >
-      <div
-        className="top-score-header-xs"
+    <>
+      <h2
+        className={styles['top-score-header-xs']}
+        style={{
+          fontSize: '1em',
+          display: 'flex',
+          alignItems: 'flex-start',
+          textAlign: 'left',
+          fontWeight: 'bold',
+          lineHeight: 1.5,
+        }}
+      >
+        {title}
+      </h2>
+      <ol
         style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          textAlign: 'left',
-          fontWeight: 'bold',
+          paddingLeft: 20,
+          margin: 0,
         }}
       >
-        Top Scores (by clicks):
-      </div>
-      {topScores.map((score, index) => (
-        <div key={score}>
-          <span
-            style={{
-              display: 'inline-block',
-              width: '1.5rem',
-            }}
-          >
-            {index + 1}.
-          </span>
-          <span>{score} clicks</span>
-        </div>
-      ))}
-    </div>
+        {topScores.map((score, index) => (
+          <li key={score}>
+            {score} {itemLabel}
+          </li>
+        ))}
+      </ol>
+    </>
   );
 };
