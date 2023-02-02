@@ -9,9 +9,11 @@ const main = () => {
   const root = document.getElementById('root');
   if (!root) return;
 
+  const store = setupStore({});
+
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
-      <Provider store={setupStore()}>
+      <Provider store={store}>
         <App />
       </Provider>
     </React.StrictMode>
