@@ -1,21 +1,24 @@
 import styles from './App.module.css';
-import { CardGameBoard, ClickCounter, Timer, TopScoreList } from './features/card-game';
+import { Column } from './commons/Column';
+import { CardGameBoard, ClickCounter, Timer, TopClicks, TopTimes } from './features/card-game';
 
 export const App = () => {
   return (
-    <div className="App">
-      <header className={styles.appHeader}>
-        <h1 className="heading-small">Memory Game</h1>
-        <div>
+    <div className={styles['app']}>
+      <header className={styles['app-header']}>
+        <Column>
+          <h1 className="heading-medium">Memory Game</h1>
+        </Column>
+        <Column>
           <ClickCounter />
-          <TopScoreList />
-        </div>
-        <div>
+          <TopClicks />
+        </Column>
+        <Column>
           <Timer />
-          <TopScoreList />
-        </div>
+          <TopTimes />
+        </Column>
       </header>
-      <section className="main-gameboard">
+      <section className={styles['main-gameboard']}>
         <CardGameBoard />
       </section>
     </div>
