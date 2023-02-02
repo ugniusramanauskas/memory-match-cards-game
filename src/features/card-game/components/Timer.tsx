@@ -1,23 +1,18 @@
 import { useTimer } from '../hooks';
 
-type Props = {
-  className?: string;
-};
-
-export const Timer = ({ className }: Props) => {
+export const Timer = () => {
   const { seconds } = useTimer();
   return (
     <div
-      className="heading-small"
       style={{
-        height: '2rem',
+        height: '2.5rem',
       }}
     >
-      <span>Seconds elapsed in game: </span>
+      <span>Seconds since the start: </span>
       <span
         style={{
           display: 'inline-block',
-          width: '5rem',
+          width: '3em',
         }}
       >
         {seconds}

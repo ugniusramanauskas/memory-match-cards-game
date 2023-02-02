@@ -5,10 +5,9 @@ export const ClickCounter = () => {
   const numberOfClicks = useAppSelector(selectNumberOfClicks);
   return (
     <div
-      className="heading-small"
       style={{
         textAlign: 'left',
-        height: '2rem',
+        height: '2.5rem',
       }}
     >
       # of clicks: {numberOfClicks}

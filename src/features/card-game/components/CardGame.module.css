@@ -8,3 +8,9 @@
     padding: 0 10px;
     gap: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .top-score-header-xs {
+    height: 2.5rem;
+  }
+}

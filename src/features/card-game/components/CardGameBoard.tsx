@@ -10,7 +10,7 @@ export const CardGameBoard = () => {
   if (cards.length === 0) return <h3>No cards were loaded</h3>;
 
   return (
-    <div className={styles.cardBoard}>
+    <div className={styles['card-board']}>
       {cards.map((card, index) => (
         <Card key={index} card={card} />
       ))}
