@@ -1,5 +1,5 @@
 import { setupStore } from '../../../app/store';
-import { emptyState, renderWithProviders } from '../../../utils/test-utils';
+import { emptyState, renderWithProviders } from '../../../utils/testUtils';
 import { GENERIC_BACK_OF_CARD_IMAGE } from '../constants';
 import { clickCard } from '../thunks';
 import { Card } from '../components/Card';
