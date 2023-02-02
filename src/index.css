@@ -5,4 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: calc(10px + 1vmin);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.heading-medium {
+  font-size: 1em;
+  font-weight: 700;
 }
