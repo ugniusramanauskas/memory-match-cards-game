@@ -23,7 +23,7 @@ const usePreloadImagesToCache = (cards: ICard[] | undefined) => {
 
 export const useLoadCards = () => {
   const dispatch = useAppDispatch();
-  const { data, error, isLoading, refetch } = useGetDeckWithCardsQuery(3);
+  const { data, error, isLoading, refetch } = useGetDeckWithCardsQuery();
   const { cards } = data || {};
 
   const shuffledCards = useMemo(() => {

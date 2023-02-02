@@ -4,3 +4,5 @@ export const GENERIC_CARD_BACK_SIDE_IMAGE =
 export const CARD_GAME_TOP_SCORES = 'cardGameTopScores';
 
 export const BASE_URL = 'https://deckofcardsapi.com/api/deck/';
+
+export const DEFAULT_CARD_COUNT = 12;
