@@ -33,3 +33,26 @@ export function renderWithProviders(
   // Return an object with the store and all of RTL's query functions
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
 }
+
+export const emptyState = {
+  cards: [],
+  cardIdsUnderEvaluation: [],
+  cardIdsMatched: [],
+  numberOfClicks: 0,
+  seconds: 0,
+  top10Scores: [],
+  numberOfGamesPlayed: 0,
+};
+
+// const initialState = {
+//   cards: [
+//     {
+//       code: 'AS',
+//       image: 'https://deckofcardsapi.com/static/img/AS.png',
+//     },
+//     {
+//       code: '0D',
+//       image: 'https://deckofcardsapi.com/static/img/0D.png',
+//     },
+//   ],
+// };
