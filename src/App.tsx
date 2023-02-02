@@ -6,9 +6,14 @@ export const App = () => {
     <div className="App">
       <header className="App-header">
         <h1 className="heading-small">Memory Game</h1>
-        <ClickCounter className="heading-small" />
-        <Timer className="heading-small" />
-        <TopScoreList className="heading-small" />
+        <div>
+          <ClickCounter />
+          <TopScoreList />
+        </div>
+        <div>
+          <Timer />
+          <TopScoreList />
+        </div>
       </header>
       <section className="main-gameboard">
         <CardGameBoard />
