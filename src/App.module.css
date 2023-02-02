@@ -1,14 +1,14 @@
-.App {
+.app {
   text-align: left;
   height: 100vh;
 }
 
-.App-logo {
+.app-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-.App-header {
+.app-header {
   min-height: 10%;
   display: flex;
   align-items: flex-start;
@@ -27,7 +27,7 @@
   font-size: calc(10px + 2vmin);
 }
 
-.App-link {
+.app-link {
   color: rgb(112, 76, 182);
 }
 
