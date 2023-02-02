@@ -1,11 +1,17 @@
 import { useAppSelector } from '../../../app/hooks';
 import { selectNumberOfClicks } from '../selectors';
 
-type Props = {
-  className?: string;
-};
-
-export const ClickCounter = ({ className }: Props) => {
+export const ClickCounter = () => {
   const numberOfClicks = useAppSelector(selectNumberOfClicks);
-  return <div className={className}># of clicks: {numberOfClicks}</div>;
+  return (
+    <div
+      className="heading-small"
+      style={{
+        textAlign: 'left',
+        height: '2rem',
+      }}
+    >
+      # of clicks: {numberOfClicks}
+    </div>
+  );
 };

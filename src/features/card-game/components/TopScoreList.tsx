@@ -16,7 +16,7 @@ export const TopScoreList = ({ className }: Props) => {
 
   return (
     <div
-      className={className}
+      className="heading-small"
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -24,6 +24,7 @@ export const TopScoreList = ({ className }: Props) => {
       }}
     >
       <div
+        className="top-score-header-xs"
         style={{
           display: 'flex',
           flexDirection: 'column',
