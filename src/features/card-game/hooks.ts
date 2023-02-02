@@ -16,7 +16,7 @@ const useRefetchCardsAfterEachGame = (refetch: () => void) => {
 
 const usePreloadImagesToCache = (cards: ICard[] | undefined) => {
   useEffect(() => {
-    if (!cards || cards?.length === 0) return;
+    if (!cards || !Array.isArray(cards) || cards.length === 0) return;
     preloadImages(cards);
   }, [cards]);
 };
@@ -27,7 +27,7 @@ export const useLoadCards = () => {
   const { cards } = data || {};
 
   const shuffledCards = useMemo(() => {
-    if (!cards || cards?.length === 0) return [];
+    if (!cards || !Array.isArray(cards) || cards.length === 0) return [];
     return shuffleCards(addIdsToCards(doubleCards(cards)));
   }, [cards]);
 
