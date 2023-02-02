@@ -1,6 +1,6 @@
 {
-  "name": "empty-create-react-app",
-  "version": "0.1.0",
+  "name": "card-memory-game",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
