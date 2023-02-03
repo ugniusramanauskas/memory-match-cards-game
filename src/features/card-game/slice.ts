@@ -49,12 +49,6 @@ export const cardGameSlice = createSlice({
     replaceTop10Times: (state, action: PayloadAction<number[]>) => {
       state.top10Times = action.payload;
     },
-    clearTop10ClickScores: (state) => {
-      state.top10ClickScores = [];
-    },
-    clearTop10Times: (state) => {
-      state.top10Times = [];
-    },
     incrementNumberOfGamesPlayed: (state) => {
       state.numberOfGamesPlayed += 1;
     },
@@ -71,8 +65,6 @@ export const {
   clearCounter,
   incrementSeconds,
   clearSeconds,
-  clearTop10ClickScores,
-  clearTop10Times,
   replaceTop10ClickScores,
   replaceTop10Times,
   incrementNumberOfGamesPlayed,

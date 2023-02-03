@@ -8,8 +8,6 @@ import {
   clearCardIdsUnderEvaluation,
   clearCounter,
   clearSeconds,
-  clearTop10ClickScores,
-  clearTop10Times,
   incrementCounter,
   incrementNumberOfGamesPlayed,
   replaceTop10ClickScores,
@@ -74,7 +72,6 @@ const updateTop10Scores = (): AppThunk => (dispatch, getState) => {
   const newTopScores = [...top10ClickScores, numberOfClicks].sort((a, b) => a - b);
   const uniqueTopScores = [...new Set(newTopScores)];
   const top10ClickScoresToStore = uniqueTopScores.slice(0, 10);
-  dispatch(clearTop10ClickScores());
   dispatch(replaceTop10ClickScores(top10ClickScoresToStore));
   localStorage.setItem(CARD_GAME_TOP_CLICK_SCORES, JSON.stringify(top10ClickScoresToStore));
 };
@@ -85,7 +82,6 @@ const updateTop10Times = (): AppThunk => (dispatch, getState) => {
   const newTopTimes = [...top10Times, seconds].sort((a, b) => a - b);
   const uniqueTopTimes = [...new Set(newTopTimes)];
   const top10TimesToStore = uniqueTopTimes.slice(0, 10);
-  dispatch(clearTop10Times());
   dispatch(replaceTop10Times(top10TimesToStore));
   localStorage.setItem(CARD_GAME_TOP_TIMES, JSON.stringify(top10TimesToStore));
 };
