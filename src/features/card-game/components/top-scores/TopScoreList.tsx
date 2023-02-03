@@ -32,7 +32,7 @@ export const TopScoreList = ({ title, topScores, itemLabel }: Props) => {
           margin: 0,
         }}
       >
-        {topScores.map((score, index) => (
+        {topScores.map((score) => (
           <li key={score}>
             {score} {itemLabel}
           </li>
