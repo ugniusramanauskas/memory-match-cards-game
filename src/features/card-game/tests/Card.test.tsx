@@ -8,7 +8,7 @@ const TEST_CODE = 'AS';
 const CARD_ID = 0;
 const initialCardGame = {
   ...emptyState,
-  cards: [{ code: TEST_CODE, image: 'https://deckofcardsapi.com/static/img/AS.png', id: CARD_ID }],
+  cards: [{ code: TEST_CODE, image: 'test_front_side_image.png', id: CARD_ID }],
 };
 const preloadedState = {
   cardGame: initialCardGame,
