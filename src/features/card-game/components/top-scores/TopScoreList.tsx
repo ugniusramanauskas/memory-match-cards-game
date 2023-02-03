@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const TopScoreList = ({ title, topScores, itemLabel }: Props) => {
-  if (!topScores || !Array.isArray(topScores) || topScores.length === 0) return null;
+  if (!topScores || topScores.length === 0) return null;
   return (
     <>
       <h2
