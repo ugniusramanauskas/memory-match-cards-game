@@ -3,7 +3,7 @@ type Props = {
   value: number;
 };
 
-export const LiveCounter = ({ title, value }: Props) => {
+export const CounterTemplate = ({ title, value }: Props) => {
   return (
     <div
       style={{

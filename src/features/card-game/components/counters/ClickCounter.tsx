@@ -1,8 +1,8 @@
 import { useAppSelector } from '../../../../app/hooks';
-import { LiveCounter } from './LiveCounterTemplate';
+import { CounterTemplate } from './CounterTemplate';
 import { selectNumberOfClicks } from '../../selectors';
 
 export const ClickCounter = () => {
   const numberOfClicks = useAppSelector(selectNumberOfClicks);
-  return <LiveCounter title="# of clicks: " value={numberOfClicks} />;
+  return <CounterTemplate title="# of clicks: " value={numberOfClicks} />;
 };
