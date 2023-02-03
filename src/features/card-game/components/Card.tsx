@@ -17,7 +17,7 @@ export const Card = ({ card }: Props) => {
   if (!cardImage) return null;
   return (
     <img
-      style={{ maxWidth: '80px', minWidth: '40px' }}
+      style={{ width: 80 }}
       src={!isFlipped ? GENERIC_BACK_OF_CARD_IMAGE : cardImage}
       alt={code}
       onClick={handleClick}
